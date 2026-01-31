@@ -30,12 +30,14 @@ public class ActionDriver {
 	public void click(By by) {
 		String elementDescription = getElementDescription(by);
 		try {
-			
-			applyBorder(by, "green");
-			driver.findElement(by).click();
 			waitForElementToBeClickable(by);
-			ExtentManager.logStep("Clicked an element : " + elementDescription);
-			logger.info("Clicked an element --> " + elementDescription);
+	        WebElement element = driver.findElement(by);
+
+	        applyBorder(by, "green");
+	        element.click();
+
+	        ExtentManager.logStep("Clicked an element : " + elementDescription);
+	        logger.info("Clicked an element --> " + elementDescription);
 		} catch (Exception e) {
 			applyBorder(by, "red");
 			ExtentManager.logFailure(BaseClass.getDriver(), "Unable to click element ", elementDescription + "_unable to click");
@@ -48,10 +50,10 @@ public class ActionDriver {
 		
 		try {
 			waitForElementToBeVisible(by);
-			applyBorder(by, "green");
 			//driver.findElement(by).clear();
 			//driver.findElement(by).sendKeys(value);
 			WebElement element = driver.findElement(by);
+			applyBorder(by, "green");
 			element.clear();
 			element.sendKeys(value);
 			logger.info("Entered Text on " + getElementDescription(by) + " --> " + value);
@@ -66,8 +68,10 @@ public class ActionDriver {
 		
 		try {
 			waitForElementToBeVisible(by);
-			applyBorder(by, "green");
-			return driver.findElement(by).getText();
+	        WebElement element = driver.findElement(by);
+
+	        applyBorder(by, "green");
+	        return element.getText();
 		} catch (Exception e) {
 			applyBorder(by, "red");
 			logger.error("Unable to get the text : " + e.getMessage());
@@ -80,7 +84,9 @@ public class ActionDriver {
 
 		try {
 			waitForElementToBeVisible(by);
-			String actualText = driver.findElement(by).getText();
+			WebElement element = driver.findElement(by);
+			String actualText = element.getText();
+			
 			if (expectedText.equals(actualText)) {
 				applyBorder(by, "green");
 				logger.info("Text are Matching : " + actualText + " equals " + expectedText);
@@ -123,12 +129,14 @@ public class ActionDriver {
 
 		try {
 			waitForElementToBeVisible(by);
+			WebElement element = driver.findElement(by);
+			
 			applyBorder(by, "green");
 			logger.info("Element is displayed : " + getElementDescription(by));
 			ExtentManager.logStep("Element is displayed : " + getElementDescription(by));
 			ExtentManager.logStepWithScreenshot(BaseClass.getDriver(), "Element is displayed ",
 					"Element is displayed : " + getElementDescription(by));
-			return driver.findElement(by).isDisplayed();
+			return element.isDisplayed();
 		} catch (Exception e) {
 			applyBorder(by, "red");
 			logger.error("Element is not displayed : " + e.getMessage());
@@ -240,6 +248,7 @@ public class ActionDriver {
 	// Utility Method to Border an element
 	public void applyBorder(By by, String color) {
 		try {
+			waitForElementToBeVisible(by);
 			// Locate the element
 			WebElement element = driver.findElement(by);
 			// Apply the border
