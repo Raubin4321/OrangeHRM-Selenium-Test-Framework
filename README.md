@@ -1,44 +1,51 @@
-**OrangeHRM Selenium Test Automation Framework**
+# 🧪 OrangeHRM Selenium Test Automation Framework
 
-This project is a Hybrid Test Automation Framework using Selenium WebDriver with Java for the OrangeHRM web application, focusing on login functionality validation using both positive and negative test scenarios.
+A **Hybrid Test Automation Framework** built using Selenium WebDriver and Java to validate the **OrangeHRM web application**, focusing on login functionality with both positive and negative scenarios.
 
-Implemented Page Object Model (POM) and Data-Driven Testing to ensure scalability, maintainability, and reusability. Integrated Jenkins CI/CD for automated execution and Extent Reports for detailed reporting.
+---
 
-**Tech Stack**
+## 🚀 Tech Stack
 
-Java, Selenium WebDriver
-TestNG
-Page Object Model (POM)
-Data-Driven Testing (Excel)
-Jenkins (CI/CD)
-Extent Reports
+* **Language:** Java
+* **Automation Tool:** Selenium WebDriver
+* **Test Framework:** TestNG
+* **Design Pattern:** Page Object Model (POM)
+* **Framework Type:** Hybrid (POM + Data-Driven)
+* **CI/CD:** Jenkins
+* **Reporting:** Extent Reports
 
-**Key Features**
+---
 
-✔️ Hybrid Framework (POM + Data-Driven)
-✔️ Login validation (valid & invalid credentials)
-✔️ UI validation (Home page logo)
-✔️ Reusable & scalable design
-✔️ Extent Reports with screenshots
-✔️ Jenkins integration for automated runs
+## ✅ Key Features
 
-**How to Run the Project**
+* ✔️ Hybrid framework design (POM + Data-Driven Testing)
+* ✔️ Automated login validation (valid & invalid credentials)
+* ✔️ UI validation (Home page logo verification)
+* ✔️ Externalized test data using Excel
+* ✔️ Extent Reports with screenshots for failures
+* ✔️ Retry mechanism for flaky tests
+* ✔️ Integrated with Jenkins for CI/CD execution
 
-1. Clone the repository:
+---
 
+## ▶️ How to Run the Project
+
+```bash
+# Clone the repository
 git clone https://github.com/Raubin4321/OrangeHRM-Selenium-Test-Framework
 
-2. Import the project into your IDE (Eclipse/IntelliJ)
+# Navigate to project directory
+cd OrangeHRM-Selenium-Test-Framework
 
-3. Install dependencies :
+# Run tests
+mvn clean test
+```
 
-mvn clean install
+### Run Options
 
-4. Run tests using:
-
-TestNG XML file
-
-Or directly from test classes
+* Execute using **testng.xml**
+* Run directly from **TestNG test classes**
+* Trigger execution via **Jenkins pipeline**
 
 ## 📂 Project Structure
 ```bash
